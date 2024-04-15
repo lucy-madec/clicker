@@ -6,8 +6,9 @@
     <link rel="icon" href="assets/images/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/styles/contact.css">
     <title>Contact</title>
-    <link rel="stylesheet" href="assets/styles/styles.css">
+
 </head>
     <body>
         <header class="bg-pink-600 text-white p-4">
@@ -21,32 +22,33 @@
         
         <main>
             <section class="container mx-auto p-4">
-                <h1 class="text-3xl font-bold text-center">Nous Contacter</h1>
+                <h1 class="text-3xl font-bold text-center text-white">Nous Contacter</h1>
                 <form action="#" method="post" class="flex flex-col space-y-4">
-                    <label>Genre :</label>
+                    <label class="text-pink-600">Genre :</label>
                     <p>
                         <label>
                             <input name="gender" type="radio" value="homme" />
-                            <span>Homme</span>
+                            <span class="text-pink-600">Homme</span>
                         </label>
                     </p>
                     <p>
                         <label>
                             <input name="gender" type="radio" value="femme" />
-                            <span>Femme</span>
+                            <span class="text-pink-600">Femme</span>
                         </label>
                     </p>
-                    <label for="name">Prénom :</label>
+                    <label for="name" class="text-pink-600">Prénom :</label>
                     <input type="text" name="name" id="name" class="border border-gray-300 p-2">
-                    <label for="name">Nom :</label>
+                    <label for="name" class="text-pink-600">Nom :</label>
                     <input type="text" name="name" id="name" class="border border-gray-300 p-2">
-                    <label for="email">Email :</label>
+                    <label for="email" class="text-pink-600">Email :</label>
                     <input type="email" name="email" id="email" class="border border-gray-300 p-2">
-                    <label for="message">Message :</label>
+                    <label for="message" class="text-pink-600">Message :</label>
                     <textarea name="message" id="message" class="border border-gray-300 p-2"></textarea>
                     <button type="submit" class="bg-pink-600 text-white p-2">Envoyer</button>
                 </form>
             </section>
+                        
         </main>
         <script src="https://cdn.tailwindcss.com"></script>     
     </body>
