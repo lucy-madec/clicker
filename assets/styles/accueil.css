@@ -1,0 +1,6 @@
+body {
+    background-image: url('chemin/vers/votre/image.jpg');
+    background-size: cover; /* Pour s'assurer que l'image couvre toute la zone de l'élément */
+    background-position: center; /* Pour centrer l'image */
+    background-repeat: no-repeat; /* Pour éviter que l'image ne se répète */
+}
