@@ -1,55 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/contact.css">
     <link rel="icon" href="assets/images/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/styles/contact.css">
     <title>Contact</title>
-
 </head>
-    <body>
-        <header class="bg-pink-600 text-white p-4">
-            <nav class="flex justify-between items-center">
-                <a href="index.html"><img src="assets/images/drapeau_golf.png"></a>
-                <ul>
-                    <li class="pr-10"><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        
-        <main>
-            <section class="container mx-auto p-4">
-                <h1 class="text-3xl font-bold text-center text-white">Nous Contacter</h1>
-                <form action="#" method="post" class="flex flex-col space-y-4">
-                    <label class="text-pink-600">Genre :</label>
-                    <p>
-                        <label>
-                            <input name="gender" type="radio" value="homme" />
-                            <span class="text-pink-600">Homme</span>
-                        </label>
-                    </p>
-                    <p>
-                        <label>
-                            <input name="gender" type="radio" value="femme" />
-                            <span class="text-pink-600">Femme</span>
-                        </label>
-                    </p>
-                    <label for="name" class="text-pink-600">Prénom :</label>
-                    <input type="text" name="name" id="name" class="border border-gray-300 p-2">
-                    <label for="name" class="text-pink-600">Nom :</label>
-                    <input type="text" name="name" id="name" class="border border-gray-300 p-2">
-                    <label for="email" class="text-pink-600">Email :</label>
-                    <input type="email" name="email" id="email" class="border border-gray-300 p-2">
-                    <label for="message" class="text-pink-600">Message :</label>
-                    <textarea name="message" id="message" class="border border-gray-300 p-2"></textarea>
-                    <button type="submit" class="bg-pink-600 text-white p-2">Envoyer</button>
-                </form>
-            </section>
-                        
-        </main>
-        <script src="https://cdn.tailwindcss.com"></script>     
-    </body>
+
+<body>
+
+    <header class="bg-pink-600 text-white p-4">
+        <nav class="flex justify-between items-center">
+            <a href="index.html"><img src="assets/images/drapeau_golf.png"></a>
+            <ul>
+                <li class="pr-10"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact mt-10">
+            <p class="message_contact text-pink-600">
+                Pour nous contacter veuillez,<br> remplir le formulaire.<br>
+                Nous nous eforcerons de<br> vous répondre dans les plus bref délais.
+            </p>
+
+        <form class="formulaire_contact">
+            <select class="select" name="Genre">
+                <option value="Genre">Genre</option>
+                <option value="Monsieur">Monsieur</option>
+                <option value="Madame">Madame</option>
+            </select>
+            <div class="formulaire_prenom">
+                <input type="text" class="input-field" placeholder="Prénom" required />
+                <label class="input-label">Prénom</label>
+            </div>
+            <div class="formulaire_email">
+                <input type="text" class="input-field" placeholder="Email" required />
+                <label class="input-label">Adresse email</label>
+            </div>
+            <div class="formulaire_message">
+                <input type="text" class="input-field" placeholder="Message" required />
+                <label class="input-label">Entrer votre message</label>
+            </div>
+            <div class="formulaire_submit">
+                <button class="bouton">Envoyer</button>
+            </div>
+        </form>
+        </section>
+    </main>
+</body>
+
 </html>
