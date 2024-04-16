@@ -62,3 +62,24 @@ document.addEventListener('DOMContentLoaded', function() {
         scoreParagraphe.textContent = "Vous avez " + nombreDeBalles + " balles de Golf";
     }
 });
+
+// Récupérer le bouton de réinitialisation du score
+const resetScoreButton = document.getElementById('resetScore');
+
+// Ajouter un écouteur d'événements de clic au bouton de réinitialisation du score
+resetScoreButton.addEventListener('click', function() {
+    // Afficher un message de confirmation
+    const confirmation = confirm("Êtes-vous sûr de vouloir réinitialiser votre score ?");
+
+    // Si l'utilisateur confirme, réinitialiser le score
+    if (confirmation) {
+        // Réinitialiser le score à 0
+        nombreDeBalles = 0;
+
+        // Mettre à jour le texte du paragraphe avec le nouveau score
+        scoreParagraphe.textContent = "Vous avez " + nombreDeBalles + " balles de Golf";
+
+        // Optionnel : Supprimer le score sauvegardé dans le local storage
+        localStorage.removeItem('score');
+    }
+});
