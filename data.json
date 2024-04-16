@@ -6,57 +6,9 @@
       "image": "assets/images/putter.png"
     },
     {
-      "nom": "SW (Sand Wedge)",
-      "coût": 100,
-      "quantité": 0,
-      "image": "assets/images/sw.png"
-    },
-    {
-      "nom": "PW (Pitching Wedge)",
-      "coût": 200,
-      "quantité": 0,
-      "image": "assets/images/pw.png"
-    },
-    {
       "nom": "Fer 9",
       "coût": 500,
       "quantité": 0,
       "image": "assets/images/fer9.png"
-    },
-    {
-      "nom": "Fer 8",
-      "coût": 1000,
-      "quantité": 0,
-      "image": "assets/images/fer8.png"
-    },
-    {
-      "nom": "Fer 7",
-      "coût": 2000,
-      "quantité": 0,
-      "image": "assets/images/fer7.png"
-    },
-    {
-      "nom": "Fer 6",
-      "coût": 5000,
-      "quantité": 0,
-      "image": "assets/images/fer6.png"
-    },
-    {
-      "nom": "Hybride 4",
-      "coût": 10000,
-      "quantité": 0,
-      "image": "assets/images/hybride4.png"
-    },
-    {
-      "nom": "Bois 3",
-      "coût": 20000,
-      "quantité": 0,
-      "image": "assets/images/bois3.png"
-    },
-    {
-      "nom": "Driver",
-      "coût": 50000,
-      "quantité": 0,
-      "image": "assets/images/driver.png"
     }
   ]
