@@ -18,6 +18,7 @@ balleDeGolf.addEventListener('click', function(event) {
 });
 
 // Fonction pour générer une nouvelle balle de golf au niveau du curseur
+// Fonction pour générer une nouvelle balle de golf au niveau du curseur
 function genererBalleDeGolfAuCurseur(event) {
     // Récupérer les coordonnées du curseur
     const x = event.clientX;
@@ -43,5 +44,6 @@ function genererBalleDeGolfAuCurseur(event) {
     }, 100); // Supprime la balle après 1 seconde (ajustez selon vos besoins)
 }
 
-// Ajouter un écouteur d'événements de clic à la fenêtre pour générer la balle de golf au niveau du curseur
-window.addEventListener('click', genererBalleDeGolfAuCurseur);
+// Ajouter un écouteur d'événements de clic à l'image de la balle de golf
+const imageBalleGolf = document.getElementById('balle_de_golf');
+imageBalleGolf.addEventListener('click', genererBalleDeGolfAuCurseur);
