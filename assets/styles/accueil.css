@@ -7,3 +7,44 @@ body {
 .bg-alpha{
     background-color: rgba(125,125,125,0.5);
 }
+
+.card {
+    width: 300px; /* Largeur de la carte */
+    padding: 20px; /* Espace intérieur de la carte */
+    background-color: #fff; /* Couleur de fond de la carte */
+    border-radius: 10px; /* Bordure arrondie de la carte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre de la carte */
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre de la carte au survol */
+  }
+  
+  .card-title {
+    font-size: 1.5em; /* Taille de police du titre */
+    margin-bottom: 10px; /* Marge en bas du titre */
+  }
+  
+  .card-content {
+    font-size: 1em; /* Taille de police du contenu */
+  }
+  
+  .card-image {
+    width: 100%; /* Largeur de l'image */
+    border-radius: 10px 10px 0 0; /* Bordure arrondie seulement en haut */
+  }
+  
+  .card-action {
+    margin-top: 20px; /* Marge en haut de la section d'action */
+  }
+  
+  .card-action a {
+    text-decoration: none; /* Supprimer le soulignement des liens */
+    color: #007bff; /* Couleur du texte des liens */
+    margin-right: 10px; /* Marge à droite des liens */
+  }
+  
+  .card-action a:hover {
+    text-decoration: underline; /* Soulignement du lien au survol */
+  }
+  
