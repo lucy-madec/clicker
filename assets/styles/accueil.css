@@ -61,9 +61,7 @@ border-radius: 10px 10px 0 0; /* Bordure arrondie seulement en haut */
 
 /* Style des images des objets */
 .card-image {
-    width: 20%;
-    height: auto;
-    border-radius: 8px;
+    width: 35%;
 }
 
 /* Style des informations sur l'objet */
@@ -71,6 +69,7 @@ border-radius: 10px 10px 0 0; /* Bordure arrondie seulement en haut */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    width: 30%;
     margin-top: 10px;
 }
 
@@ -86,6 +85,8 @@ border-radius: 10px 10px 0 0; /* Bordure arrondie seulement en haut */
 
 /* Style de la quantité de l'objet */
 .quantity {
-    display: block;
+    display: flex;
     margin-top: 5px;
+    width: 30%;
+    align-items: center;
 }
