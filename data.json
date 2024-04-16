@@ -1,14 +1,14 @@
 [
-    {
-      "nom": "Putter",
-      "coût": 10,
-      "quantité": 0,
-      "image": "assets/images/putter.png"
-    },
-    {
-      "nom": "Fer 9",
-      "coût": 500,
-      "quantité": 0,
-      "image": "assets/images/fer9.png"
-    }
-  ]
+  {
+    "nom": "Putter",
+    "coût": 10,
+    "quantité": 0,
+    "image": "assets/images/putter.png"
+  },
+  {
+    "nom": "Fer 9",
+    "coût": 500,
+    "quantité": 0,
+    "image": "assets/images/fer9.png"
+  }
+]
