@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/contact.css">
+    <link rel="icon" href="assets/images/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Contact</title>
+</head>
+
+<body>
+
+    <header class="bg-pink-600 text-white p-4">
+        <nav class="flex justify-between items-center">
+            <a href="index.html"><img src="assets/images/drapeau_golf.png"></a>
+            <ul>
+                <li class="pr-10"><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="contact mt-10">
+            <p class="message_contact">
+                Pour nous contacter veuillez,<br> remplir le formulaire.<br>
+                Nous nous eforcerons de<br> vous répondre dans les plus bref délais.
+            </p>
+
+        <form class="formulaire_contact">
+            <select class="select" name="Genre">
+                <option value="Genre">Genre</option>
+                <option value="Monsieur">Monsieur</option>
+                <option value="Madame">Madame</option>
+            </select>
+            <div class="formulaire_prenom">
+                <input type="text" class="input-field" placeholder="Prénom" required />
+                <label class="input-label">Prénom</label>
+            </div>
+            <div class="formulaire_email">
+                <input type="text" class="input-field" placeholder="Email" required />
+                <label class="input-label">Adresse email</label>
+            </div>
+            <div class="formulaire_message">
+                <input type="text" class="input-field" placeholder="Message" required />
+                <label class="input-label">Entrer votre message</label>
+            </div>
+            <div class="formulaire_submit">
+                <button class="bouton">Envoyer</button>
+            </div>
+        </form>
+        </section>
+    </main>
+</body>
+
+</html>
