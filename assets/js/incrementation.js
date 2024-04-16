@@ -47,3 +47,18 @@ function genererBalleDeGolfAuCurseur(event) {
 // Ajouter un écouteur d'événements de clic à l'image de la balle de golf
 const imageBalleGolf = document.getElementById('balle_de_golf');
 imageBalleGolf.addEventListener('click', genererBalleDeGolfAuCurseur);
+
+// Ajoute un écouteur d'évènements pour sauvegarder la partie avant de quitter la page
+window.addEventListener('beforeunload', function(event) {
+    // Sauvegarde le score actuel dans le local storage
+    localStorage.setItem('score', nombreDeBalles);
+});
+
+// Charger le score sauvegardé au chargement de la page
+document.addEventListener('DOMContentLoaded', function() {
+    const sauvegardeScore = localStorage.getItem('score');
+    if (sauvegardeScore) {
+        nombreDeBalles = parseInt(sauvegardeScore, 10);
+        scoreParagraphe.textContent = "Vous avez " + nombreDeBalles + " balles de Golf";
+    }
+});
