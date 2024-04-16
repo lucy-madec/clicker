@@ -26,6 +26,7 @@ margin: 0 auto;
 background-color: #fff; /* Couleur de fond de la carte */
 border-radius: 10px; /* Bordure arrondie de la carte */
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre de la carte */
+cursor: pointer;
 }
 
 .card:hover {
