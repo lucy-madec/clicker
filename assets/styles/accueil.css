@@ -3,10 +3,6 @@ body {
     background-repeat: no-repeat; /* Pour éviter que l'image ne se répète */
 }
 
-.bg-alpha{
-    background-color: rgba(125,125,125,0.5);
-}
-
 h1 {
     color: white;
     text-align: center;
@@ -18,4 +14,80 @@ h1 {
     margin-right: auto;
     margin-top: 100px;
     cursor: pointer;
+}
+
+
+.bg-alpha{
+    background-color: rgba(125,125,125,0.5);
+}
+
+.card {
+width: 80%; /* Largeur de la carte */
+margin: 0 auto;
+background-color: #fff; /* Couleur de fond de la carte */
+border-radius: 10px; /* Bordure arrondie de la carte */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre de la carte */
+}
+
+.card:hover {
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre de la carte au survol */
+}
+
+.card-image {
+width: 20%; /* Largeur de l'image */
+margin: auto;
+border-radius: 10px 10px 0 0; /* Bordure arrondie seulement en haut */
+}
+
+  
+
+
+/* Style général de la boutique */
+.boutique {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style des cartes d'objets */
+.card {
+    display: flex;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    margin: 10px;
+    width: 90%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style des images des objets */
+.card-image {
+    width: 35%;
+}
+
+/* Style des informations sur l'objet */
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 30%;
+    margin-top: 10px;
+}
+
+/* Style du nom de l'objet */
+.name {
+    font-weight: bold;
+}
+
+/* Style du coût de l'objet */
+.cost {
+    color: #007bff; /* Couleur du texte pour le coût de l'objet */
+}
+
+/* Style de la quantité de l'objet */
+.quantity {
+    display: flex;
+    margin-top: 5px;
+    width: 30%;
+    align-items: center;
 }
