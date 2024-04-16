@@ -15,54 +15,45 @@ h1 {
     margin-top: 100px;
 }
 
-
+/* Style général de la boutique */
 .bg-alpha{
     background-color: rgba(125,125,125,0.5);
 }
 
-.card {
-width: 80%; /* Largeur de la carte */
-margin: 0 auto;
-background-color: #fff; /* Couleur de fond de la carte */
-border-radius: 10px; /* Bordure arrondie de la carte */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre de la carte */
-cursor: pointer;
-}
-
-.card:hover {
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre de la carte au survol */
-}
-
-.card-image {
-width: 20%; /* Largeur de l'image */
-margin: auto;
-border-radius: 10px 10px 0 0; /* Bordure arrondie seulement en haut */
-}
-
-  
-
-
-/* Style général de la boutique */
 .boutique {
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: auto; /* Ajoute une barre de défilement vertical si nécessaire */
+    height: calc(100vh - 150px);
 }
 
 /* Style des cartes d'objets */
 .card {
     display: flex;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    margin: 10px;
+    border: 2px solid gray;
+    margin: 3px;
     width: 90%;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-image: url("../images/pelouse.jpg");
+    border-radius: 10px; /* Bordure arrondie de la carte */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre de la carte */
+    cursor: pointer;
+    transition: box-shadow ease-in-out 0.2s;
+    transition: filter ease-in-out 0.2s;
+    
 }
-
+     
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.2);
+}
+    
 /* Style des images des objets */
 .card-image {
     width: 35%;
+    object-fit: contain;
+    margin: auto;
+    max-height: 95px;
 }
 
 /* Style des informations sur l'objet */
