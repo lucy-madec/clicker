@@ -2,12 +2,15 @@
 const balleDeGolf = document.getElementById('balle_de_golf');
 const scoreParagraphe = document.getElementById('score');
 const acheterPutterButton = document.getElementById('acheterPutter');
+const acheterFerButton = document.getElementById('acheterFer9');
 
 // Variable pour stocker le nombre de balles de golf
 let nombreDeBalles = 0;
 
 // Variable pour suivre si le Putter a été acheté
 let putterAchete = false;
+
+let autoclickerInterval;
 
 // Ajouter un écouteur d'événements de clic à l'image de la balle de golf
 balleDeGolf.addEventListener('click', function(event) {
@@ -52,6 +55,64 @@ function genererBalleDeGolfAuCurseur(event) {
     }, 100); // Supprime la balle après 1 seconde
 }
 
+// Fonction pour charger et traiter le fichier JSON des clubs de golf
+function chargerClubsDeGolf() {
+    fetch('data.json') // Charger le fichier JSON
+        .then(response => response.json()) // Convertir la réponse en JSON
+        .then(data => {
+            // Appeler la fonction pour créer les articles pour chaque club
+            creerArticlesClubs(data);
+        })
+        .catch(error => console.error('Erreur lors du chargement des données JSON :', error));
+}
+
+// Fonction pour créer les articles pour chaque club
+function creerArticlesClubs(clubs) {
+    const boutique = document.querySelector('.boutique'); // Sélectionner l'élément de la boutique
+    
+    // Pour chaque club dans la liste
+    clubs.forEach(club => {
+        // Créer un nouvel article
+        const article = document.createElement('article');
+        article.classList.add('card');
+        
+        // Créer l'image de l'objet
+        const img = document.createElement('img');
+        img.classList.add('card-image');
+        img.src = club.image;
+        img.alt = club.nom;
+        article.appendChild(img);
+        
+        // Créer les informations sur l'objet (nom et coût)
+        const info = document.createElement('div');
+        info.classList.add('info');
+        
+        const nom = document.createElement('span');
+        nom.classList.add('name');
+        nom.textContent = club.nom;
+        info.appendChild(nom);
+        
+        const coût = document.createElement('span');
+        coût.classList.add('cost');
+        coût.textContent = `Coût : ${club.coût}`;
+        info.appendChild(coût);
+        
+        article.appendChild(info);
+        
+        // Créer la quantité de l'objet
+        const quantite = document.createElement('span');
+        quantite.classList.add('quantity');
+        quantite.textContent = `Quantité : ${club.quantite}`;
+        article.appendChild(quantite);
+        
+        // Ajouter l'article à la boutique
+        boutique.appendChild(article);
+    });
+}
+
+// Appeler la fonction pour charger les clubs de golf au chargement de la page
+window.onload = chargerClubsDeGolf;
+
 // Ajouter un écouteur d'événements de clic au bouton de l'achat du Putter
 acheterPutterButton.addEventListener('click', function() {
     // Vérifier si le score est suffisant pour acheter le Putter
@@ -71,6 +132,43 @@ acheterPutterButton.addEventListener('click', function() {
         // Afficher un message d'erreur si le score n'est pas suffisant
         alert("Vous n'avez pas assez de points pour acheter le Putter.");
     }
+});
+
+// Ajouter un écouteur d'événements de clic au bouton de l'achat du Fer
+acheterFerButton.addEventListener('click', function() {
+    // Vérifier si le score est suffisant pour acheter le Fer
+    if (nombreDeBalles >= 50) {
+        // Réduire le score de 50 points
+        nombreDeBalles -= 50;
+
+        // Mettre à jour le texte du paragraphe avec le nouveau score
+        scoreParagraphe.textContent = "Vous avez " + nombreDeBalles + " balles de Golf";
+
+        // Activer l'autoclicker pour le Fer
+        activerAutoclickerFer();
+    } else {
+        // Afficher un message d'erreur si le score n'est pas suffisant
+        alert("Vous n'avez pas assez de points pour acheter le Fer.");
+    }
+});
+
+function activerAutoclickerFer() {
+    // Définir l'intervalle des clics automatiques (en millisecondes)
+    const intervalleClics = 1000; // 1 seconde
+
+    // Commencer à incrémenter le score à intervalles réguliers
+    autoclickerInterval = setInterval(function() {
+        // Incrémenter le nombre de balles de golf
+        nombreDeBalles++;
+
+        // Mettre à jour le texte du paragraphe avec le nouveau nombre de balles
+        scoreParagraphe.textContent = "Vous avez " + nombreDeBalles + " balles de Golf";
+    }, intervalleClics);
+}
+
+// Arrêter l'autoclicker lorsque le joueur quitte la page
+window.addEventListener('beforeunload', function(event) {
+    clearInterval(autoclickerInterval);
 });
 
 // Ajouter un écouteur d'événements pour sauvegarder la partie avant de quitter la page
