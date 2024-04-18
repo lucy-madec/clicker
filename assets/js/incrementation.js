@@ -3,6 +3,7 @@ const balleDeGolf = document.getElementById('balle_de_golf');
 const scoreParagraphe = document.getElementById('score');
 const acheterPutterButton = document.getElementById('acheterPutter');
 const acheterFerButton = document.getElementById('acheterFer9');
+const acheterSeauButton = document.getElementById('acheterSeau');
 
 // Variable pour stocker le nombre de balles de golf
 let nombreDeBalles = 0;
@@ -109,6 +110,24 @@ acheterFerButton.addEventListener('click', function() {
     }
 });
 
+// Ajouter un écouteur d'événements de clic au bouton de l'achat du Driver
+acheterSeauButton.addEventListener('click', function() {
+    // Vérifier si le score est suffisant pour acheter le Driver
+    if (nombreDeBalles >= 100) {
+        // Réduire le score de 100 points
+        nombreDeBalles -= 100;
+
+        // Mettre à jour le texte du paragraphe avec le nouveau score
+        scoreParagraphe.textContent = "Vous avez " + nombreDeBalles + " balles de Golf";
+
+        // Activer l'autoclicker pour le Driver
+        activerAutoclickerSeau();
+    } else {
+        // Afficher un message d'erreur si le score n'est pas suffisant
+        alert("Vous n'avez pas assez de points pour acheter le Seau (Auto-clicker).");
+    }
+});
+
 function activerAutoclickerFer() {
     // Définir l'intervalle des clics automatiques (en millisecondes)
     const intervalleClics = 1000; // 1 seconde
@@ -117,6 +136,20 @@ function activerAutoclickerFer() {
     autoclickerInterval = setInterval(function() {
         // Incrémenter le nombre de balles de golf
         nombreDeBalles++;
+
+        // Mettre à jour le texte du paragraphe avec le nouveau nombre de balles
+        scoreParagraphe.textContent = "Vous avez " + nombreDeBalles + " balles de Golf";
+    }, intervalleClics);
+}
+
+function activerAutoclickerSeau() {
+    // Définir l'intervalle des clics automatiques (en millisecondes)
+    const intervalleClics = 1000; // 1 seconde
+
+    // Commencer à incrémenter le score à intervalles réguliers
+    autoclickerInterval = setInterval(function() {
+        // Incrémenter le nombre de balles de golf
+        nombreDeBalles += 10;
 
         // Mettre à jour le texte du paragraphe avec le nouveau nombre de balles
         scoreParagraphe.textContent = "Vous avez " + nombreDeBalles + " balles de Golf";
