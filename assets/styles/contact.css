@@ -1,94 +1,184 @@
+@import url('common.css');
+
 body {
-    background-image: url('../images/fond_golf_contact.jpg');
-    background-repeat: no-repeat; /* Pour éviter que l'image ne se répète */
+    background-image: url('../images/fond_golf_clicker.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
 }
 
 main {
     display: flex;
     justify-content: center;
-}
-
-.contact{
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
     align-items: center;
-
+    min-height: calc(100vh - 160px);
+    padding: 2rem;
 }
 
-.contact p {
-    font-size: 24px;
-}
-
-.formulaire_contact {
-    color: black;
-    padding-top: 20px;
+.contact {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+@media (min-width: 768px) {
+    .contact {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.message_contact {
+    color: white;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.message_contact::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+@media (min-width: 768px) {
+    .message_contact {
+        width: 40%;
+        margin-bottom: 0;
+        text-align: left;
+        padding-right: 2rem;
+    }
+    
+    .message_contact::after {
+        left: 25%;
+    }
+}
+
+.formulaire_contact {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    color: white;
+    align-items: center;
+}
+
+.select,
+.input-field {
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
 }
 
 .formulaire_contact select {
-    background-color: #fff;
-    border: 2px solid #000000;
-    color: #000000;
-    font-size: 20px;
-    padding: 10px;
-    width: 150px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 4px;
+    color: var(--text-dark);
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    width: 100%;
     cursor: pointer;
-    text-align: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
 }
 
-.formulaire_prenom {
-    color: black;
-    display: flex;
-    flex-direction: column-reverse;
-    padding-top: 20px;
-
+.formulaire_contact select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary-color);
 }
 
-.formulaire_email {
-    color: black;
-    display: flex;
-    flex-direction: column-reverse;
-    padding-top: 20px;
-}
-
+.formulaire_prenom,
+.formulaire_email,
 .formulaire_message {
-    color: black;
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
     display: flex;
     flex-direction: column-reverse;
-    padding-top: 20px;
-    padding-bottom: 50px;
 }
 
 .input-label {
-	text-align: center;
-    font-family: 'Lunasima', sans-serif;
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    text-align: left;
 }
 
 .input-field {
-    color: black;
-	border: 0;
-	background-color: transparent;
-	border-bottom: 2px solid #E53B7E; 
-	font: inherit;
-	padding: 8px 16px;
-    outline: 0;
-	text-align: center;
+    color: var(--text-dark);
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    font: inherit;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    box-shadow: 0 0 0 2px var(--primary-color);
+    background-color: white;
 }
 
 .formulaire_submit {
-    padding-bottom: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
-.bouton{
-    background-color: #fff;
-    border: solid, #000000;
-    color: #000000;
-    text-align: center;
-    font-size: 20px;
-    padding: 10px;
-    width: 150px;
+.bouton {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    min-width: 150px;
+}
+
+.bouton:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bouton:active {
+    transform: translateY(0);
+}
+
+/* Animation pour les éléments qui apparaissent */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }

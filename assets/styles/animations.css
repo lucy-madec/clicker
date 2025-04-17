@@ -1,0 +1,165 @@
+/* Animations et effets visuels pour le jeu */
+
+/* Animation pour la balle principale */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Animation pour les clics */
+@keyframes clickEffect {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Animation pour le score qui change */
+@keyframes scoreChange {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Effet de clic */
+.click-ripple {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.5s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+/* Animation pour les éléments qui apparaissent */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Animation pour les boutons */
+@keyframes buttonPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.button-pulse {
+    animation: buttonPulse 0.5s ease;
+}
+
+/* Animation pour les balles qui volent */
+.flying-ball {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1000;
+    animation: fly 1s ease-out forwards;
+}
+
+@keyframes fly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx, -100px), var(--ty, -100px)) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Animation pour les bonus */
+.bonus-text {
+    position: absolute;
+    color: gold;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 1000;
+    animation: bonusFloat 1.5s ease-out forwards;
+}
+
+@keyframes bonusFloat {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+/* Animation pour les achievements */
+@keyframes achievementSlideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes achievementSlideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* Animation pour les boutons de la boutique */
+.shop-item:hover img {
+    animation: wiggle 0.5s ease;
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+/* Animation pour le compteur d'items */
+.item-count-increase {
+    animation: countPulse 0.5s ease;
+}
+
+@keyframes countPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+/* Animation pour le hover sur les boutons */
+.btn:hover, .shop-item:hover, .shop-tab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active, .shop-item:active, .shop-tab:active {
+    transform: translateY(0);
+}
+
+/* Animation pour les transitions de page */
+.page-transition {
+    animation: pageFadeIn 0.5s ease;
+}
+
+@keyframes pageFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animation pour le reset button */
+.reset-button:hover {
+    animation: dangerPulse 1s infinite;
+}
+
+@keyframes dangerPulse {
+    0%, 100% { background-color: rgba(255, 0, 0, 0.2); }
+    50% { background-color: rgba(255, 0, 0, 0.4); }
+}

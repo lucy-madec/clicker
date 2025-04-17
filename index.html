@@ -3,49 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Golf Clicker - Accueil</title>
     <link rel="icon" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="assets/styles/common.css">
     <link rel="stylesheet" href="assets/styles/accueil.css">
+    <link rel="stylesheet" href="assets/styles/shop.css">
+    <link rel="stylesheet" href="assets/styles/animations.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Jouez à Golf Clicker, un jeu où vous gagnez des points en cliquant sur une balle de golf et achetez des améliorations pour progresser plus rapidement.">
 </head>
 <body>
-    <header class="bg-pink-600 text-white p-4">
-        <nav class="flex justify-between items-center">
-            <a href="index.html"><img src="assets/images/drapeau_golf.png"></a>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="assets/images/drapeau_golf.png" alt="Logo Golf Clicker"></a>
             <ul>
-                <li class="pr-10"><a href="contact.html">Contact</a></li>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
         </nav>
     </header>        
     <main class="flex">
 <!---------------------------- Section Clicker ---------------------------->
         <section class="clique container w-2/3">
-            <!-- Section clicker -->
-            <h1 class="mt-4 text-3xl">Appuie sur la balle pour gagner des points et bonus</h1>
-            <img id="balle_de_golf" src="assets/images/balle_de_golf.png" alt="Balle de golf" width="450">
-            <p id="score" class="text-white text-center mt-4 text-3xl">Vous avez 0 balles de Golf</p> <!-- Remplacez 0 par le nombre initial de balles de golf -->
+            <h1>Appuie sur la balle pour gagner des points et bonus</h1>
+            <div id="click-area">
+                <img id="balle_de_golf" src="assets/images/balle_de_golf.png" alt="Balle de golf" width="450">
+                <div id="click-effect"></div>
+            </div>
+            <p id="score">Vous avez 0 balles de Golf</p>
+            
+            <!-- Statistiques du jeu -->
+            <div class="stats">
+                <h3><i class="fas fa-chart-line"></i> Statistiques</h3>
+                <div class="stat-item">
+                    <span>Balles par clic:</span>
+                    <span id="balles-par-clic">1</span>
+                </div>
+                <div class="stat-item">
+                    <span>Balles par seconde:</span>
+                    <span id="balles-par-seconde">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Total de clics:</span>
+                    <span id="total-clics">0</span>
+                </div>
+            </div>
         </section>
 <!---------------------------- Section Boutique ---------------------------->
         <section class="boutique container w-1/3 h-screen bg-alpha">
-            <h2 class="text-3xl text-center p-4 ">Boutique</h2>
-            <!-- Début de la liste des objets -->
-            <button id="acheterPutter" class="mt-4 bg-white text-pink-600 font-bold py-2 px-4 rounded flex">
-                Acheter le Putter (10 points)<img src="assets/images/putter.png" alt="Putter" width="100">
+            <h2 class="text-3xl text-center p-4">Boutique</h2>
+            
+            <!-- Onglets de la boutique -->
+            <div class="shop-tabs">
+                <button class="shop-tab active" data-tab="equipements">Équipements</button>
+                <button class="shop-tab" data-tab="ameliorations">Améliorations</button>
+            </div>
+            
+            <!-- Contenu des onglets -->
+            <div class="tab-content" id="equipements">
+                <!-- Équipements -->
+                <button id="acheterPutter" class="shop-item">
+                    <div class="item-info">
+                        <span class="item-name">Putter</span>
+                        <span class="item-desc">+1 balle par clic</span>
+                        <span class="item-cost">10 balles</span>
+                    </div>
+                    <img src="assets/images/putter.png" alt="Putter" width="80">
+                    <span class="item-count" id="putter-count">0</span>
+                </button>
+                
+                <button id="acheterFer9" class="shop-item">
+                    <div class="item-info">
+                        <span class="item-name">Fer 9</span>
+                        <span class="item-desc">+1 balle par seconde</span>
+                        <span class="item-cost">50 balles</span>
+                    </div>
+                    <img src="assets/images/fer9.png" alt="Fer 9" width="80">
+                    <span class="item-count" id="fer9-count">0</span>
+                </button>
+                
+                <button id="acheterSeau" class="shop-item">
+                    <div class="item-info">
+                        <span class="item-name">Seau de balles</span>
+                        <span class="item-desc">+10 balles par seconde</span>
+                        <span class="item-cost">100 balles</span>
+                    </div>
+                    <img src="assets/images/seau-golf.png" alt="Seau" width="40">
+                    <span class="item-count" id="seau-count">0</span>
+                </button>
+                
+                <button id="acheterDriver" class="shop-item">
+                    <div class="item-info">
+                        <span class="item-name">Driver</span>
+                        <span class="item-desc">+50 balles par seconde</span>
+                        <span class="item-cost">500 balles</span>
+                    </div>
+                    <img src="assets/images/driver.png" alt="Driver" width="80">
+                    <span class="item-count" id="driver-count">0</span>
+                </button>
+            </div>
+            
+            <div class="tab-content hidden" id="ameliorations">
+                <!-- Améliorations -->
+                <button id="ameliorerClics" class="shop-item">
+                    <div class="item-info">
+                        <span class="item-name">Gants de golf</span>
+                        <span class="item-desc">Double l'efficacité des clics</span>
+                        <span class="item-cost">200 balles</span>
+                    </div>
+                    <img src="assets/images/gants.png" alt="Gants" width="60">
+                    <span class="item-count" id="gants-count">0</span>
+                </button>
+                
+                <button id="ameliorerAuto" class="shop-item">
+                    <div class="item-info">
+                        <span class="item-name">Caddie</span>
+                        <span class="item-desc">Double l'efficacité des auto-clickers</span>
+                        <span class="item-cost">300 balles</span>
+                    </div>
+                    <img src="assets/images/caddie.png" alt="Caddie" width="60">
+                    <span class="item-count" id="caddie-count">0</span>
+                </button>
+            </div>
+            
+            <!-- Bouton de réinitialisation -->
+            <button id="resetGame" class="reset-button">
+                <i class="fas fa-redo-alt"></i> Réinitialiser la partie
             </button>
-            <button id="acheterFer9" class="mt-4 bg-white text-pink-600 font-bold py-2 px-4 rounded flex">
-                Acheter le Fer (Auto-clicker) (50 points) <img src="assets/images/fer9.png" alt="Fer" width="100">
-            </button>
-            <button id="acheterSeau" class="mt-4 bg-white text-pink-600 font-bold py-2 px-4 rounded flex">
-                Acheter le Seau (Auto-clicker) (100 points) <img src="assets/images/seau-golf.png" alt="Seau" width="40">
-            </button>
-            <!-- Fin de l'article de l'objet -->
         </section>
     </main>
-    <footer class="bg-pink-600 text-white p-4">
-        <p class="text-center">© 2024 - Tous droits réservés</p>
+    <footer>
+        <div class="footer-content">
+            <p>© 2024 - Golf Clicker - Tous droits réservés</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
     </footer>
+    
+    <!-- Popup pour les achievements -->
+    <div id="achievement-popup" class="achievement-popup hidden">
+        <div class="achievement-content">
+            <i class="fas fa-trophy achievement-icon"></i>
+            <div class="achievement-text">
+                <h3>Succès débloqué !</h3>
+                <p id="achievement-description"></p>
+            </div>
+        </div>
+    </div>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/js/incrementation.js"></script>
+    <script src="assets/js/game.js"></script>
 </body>
 </html>

@@ -1,94 +1,219 @@
 body {
     background-image: url('../images/fond_golf_clicker.jpg');
-    background-repeat: no-repeat; /* Pour éviter que l'image ne se répète */
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    overflow-x: hidden;
 }
 
 h1 {
     color: white;
     text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    padding: 0 1rem;
 }
 
+/* Balle de golf principale */
 #balle_de_golf {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
+    margin: 3rem auto;
     cursor: pointer;
+    transition: transform 0.1s ease;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    animation: float 3s ease-in-out infinite;
 }
 
-
-.bg-alpha{
-    background-color: rgba(125,125,125,0.5);
+#balle_de_golf:hover {
+    transform: scale(1.05);
 }
 
-.card {
-width: 80%; /* Largeur de la carte */
-margin: 0 auto;
-background-color: #fff; /* Couleur de fond de la carte */
-border-radius: 10px; /* Bordure arrondie de la carte */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre de la carte */
-cursor: pointer;
+#balle_de_golf:active {
+    transform: scale(0.95);
 }
 
-.card:hover {
-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre de la carte au survol */
+/* Animation de flottement pour la balle */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
-.card-image {
-width: 20%; /* Largeur de l'image */
-margin: auto;
-border-radius: 10px 10px 0 0; /* Bordure arrondie seulement en haut */
+/* Animation pour les clics */
+@keyframes clickEffect {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
 }
 
-  
+/* Animation pour le score qui change */
+@keyframes scoreChange {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
 
+/* Compteur de score */
+#score {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+
+/* Section principale du jeu */
+.clique {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+
+/* Fond semi-transparent pour la boutique */
+.bg-alpha {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    border-left: 3px solid var(--primary-color);
+    overflow-y: auto;
+    padding: 1rem;
+}
 
 /* Style général de la boutique */
 .boutique {
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
 }
 
-/* Style des cartes d'objets */
-.card {
-    display: flex;
-    border: 2px solid #ccc;
+.boutique h2 {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.boutique h2:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Style des boutons de la boutique */
+.boutique button {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
     border-radius: 8px;
-    margin: 10px;
-    width: 90%;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Style des images des objets */
-.card-image {
-    width: 35%;
-}
-
-/* Style des informations sur l'objet */
-.info {
+    padding: 1rem;
+    margin-bottom: 1rem;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 30%;
-    margin-top: 10px;
-}
-
-/* Style du nom de l'objet */
-.name {
-    font-weight: bold;
-}
-
-/* Style du coût de l'objet */
-.cost {
-    color: #007bff; /* Couleur du texte pour le coût de l'objet */
-}
-
-/* Style de la quantité de l'objet */
-.quantity {
-    display: flex;
-    margin-top: 5px;
-    width: 30%;
+    justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.boutique button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.boutique button:active {
+    transform: translateY(0);
+}
+
+.boutique button img {
+    transition: transform 0.3s ease;
+}
+
+.boutique button:hover img {
+    transform: rotate(10deg);
+}
+
+/* Styles pour les items désactivés */
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+.disabled:hover {
+    transform: none !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Compteurs d'items */
+.item-count {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+/* Statistiques du jeu */
+.stats {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    color: white;
+}
+
+.stats h3 {
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.5rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+    
+    .clique, .boutique {
+        width: 100% !important;
+    }
+    
+    .bg-alpha {
+        border-left: none;
+        border-top: 3px solid var(--primary-color);
+    }
+    
+    #balle_de_golf {
+        width: 250px;
+        margin: 2rem auto;
+    }
 }
