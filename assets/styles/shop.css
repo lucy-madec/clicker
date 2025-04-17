@@ -33,7 +33,9 @@
     flex-direction: column;
     max-height: calc(100vh - 300px);
     overflow-y: auto;
+    overflow-x: hidden; /* Empêcher le défilement horizontal */
     padding-right: 0.5rem;
+    position: relative; /* Pour le positionnement correct des badges */
 }
 
 .tab-content::-webkit-scrollbar {
@@ -66,6 +68,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    width: calc(100% - 10px); /* Réduire légèrement la largeur pour éviter le dépassement */
+    margin-right: 10px; /* Ajouter une marge à droite */
 }
 
 .shop-item:hover {
@@ -112,8 +116,8 @@
 
 .item-count {
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -8px;
+    right: 10px; /* Déplacer vers la gauche pour éviter qu'il soit coupé */
     background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
@@ -125,6 +129,7 @@
     font-size: 0.8rem;
     font-weight: bold;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* S'assurer que le badge est au-dessus des autres éléments */
 }
 
 .reset-button {

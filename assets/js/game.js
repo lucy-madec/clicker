@@ -120,7 +120,8 @@ function toggleButtonState(button, isEnabled) {
 
 // Fonction pour générer une nouvelle balle de golf au niveau du curseur
 function genererBalleDeGolfAuCurseur(event) {
-    // Récupérer les coordonnées du curseur
+    // Récupérer les coordonnées relatives à la zone de clic
+    const rect = clickArea.getBoundingClientRect();
     const x = event.clientX;
     const y = event.clientY;
 
@@ -131,12 +132,13 @@ function genererBalleDeGolfAuCurseur(event) {
     balle.src = 'assets/images/balle_de_golf_jaune.png';
     balle.alt = 'Balle de golf';
     balle.width = 30;
-    balle.style.position = 'absolute';
+    balle.style.position = 'fixed'; // Utiliser fixed au lieu de absolute pour un positionnement cohérent
     balle.style.left = (x - 15) + 'px';
     balle.style.top = (y - 15) + 'px';
     balle.style.zIndex = '1000';
     balle.style.opacity = '1';
     balle.style.transition = 'all 0.5s ease';
+    balle.style.pointerEvents = 'none'; // Éviter que la balle n'interfère avec les clics
 
     // Ajouter la balle de golf à la page
     document.body.appendChild(balle);
@@ -159,16 +161,20 @@ function showClickEffect(event) {
     const effect = document.createElement('div');
     effect.classList.add('click-ripple');
     
-    // Positionner l'effet au niveau du curseur
-    const rect = clickArea.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    // Récupérer les coordonnées relatives à la balle de golf
+    const balleRect = balleDeGolf.getBoundingClientRect();
+    const balleCenterX = balleRect.left + balleRect.width / 2;
+    const balleCenterY = balleRect.top + balleRect.height / 2;
     
-    effect.style.left = `${x}px`;
-    effect.style.top = `${y}px`;
+    // Positionner l'effet au centre de la balle
+    effect.style.position = 'fixed';
+    effect.style.left = `${balleCenterX}px`;
+    effect.style.top = `${balleCenterY}px`;
+    effect.style.transform = 'translate(-50%, -50%)';
+    effect.style.pointerEvents = 'none';
     
-    // Ajouter l'effet à la zone de clic
-    clickArea.appendChild(effect);
+    // Ajouter l'effet au document
+    document.body.appendChild(effect);
     
     // Supprimer l'effet après l'animation
     setTimeout(() => {
