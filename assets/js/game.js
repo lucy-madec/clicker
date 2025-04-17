@@ -120,8 +120,7 @@ function toggleButtonState(button, isEnabled) {
 
 // Fonction pour générer une nouvelle balle de golf au niveau du curseur
 function genererBalleDeGolfAuCurseur(event) {
-    // Récupérer les coordonnées relatives à la zone de clic
-    const rect = clickArea.getBoundingClientRect();
+    // Récupérer les coordonnées du curseur
     const x = event.clientX;
     const y = event.clientY;
 
@@ -142,6 +141,16 @@ function genererBalleDeGolfAuCurseur(event) {
 
     // Ajouter la balle de golf à la page
     document.body.appendChild(balle);
+    
+    // Créer l'effet de clic sur la balle jaune
+    const effect = document.createElement('div');
+    effect.classList.add('click-ripple');
+    effect.style.position = 'fixed';
+    effect.style.left = `${x}px`;
+    effect.style.top = `${y}px`;
+    effect.style.transform = 'translate(-50%, -50%)';
+    effect.style.pointerEvents = 'none';
+    document.body.appendChild(effect);
 
     // Animation de la balle
     setTimeout(() => {
@@ -149,29 +158,33 @@ function genererBalleDeGolfAuCurseur(event) {
         balle.style.opacity = '0';
     }, 10);
 
-    // Supprimer la balle de golf après l'animation
+    // Supprimer la balle de golf et l'effet après l'animation
     setTimeout(() => {
         balle.remove();
+        effect.remove();
     }, 500);
 }
 
-// Fonction pour afficher un effet de clic
+// Fonction pour afficher un effet de clic sur la balle principale
 function showClickEffect(event) {
     // Créer un élément pour l'effet de clic
     const effect = document.createElement('div');
     effect.classList.add('click-ripple');
+    effect.classList.add('main-ball-effect'); // Classe spécifique pour l'effet sur la balle principale
     
-    // Récupérer les coordonnées relatives à la balle de golf
+    // Récupérer les coordonnées relatives à la balle de golf principale
     const balleRect = balleDeGolf.getBoundingClientRect();
     const balleCenterX = balleRect.left + balleRect.width / 2;
     const balleCenterY = balleRect.top + balleRect.height / 2;
     
-    // Positionner l'effet au centre de la balle
+    // Positionner l'effet au centre de la balle principale
     effect.style.position = 'fixed';
     effect.style.left = `${balleCenterX}px`;
     effect.style.top = `${balleCenterY}px`;
     effect.style.transform = 'translate(-50%, -50%)';
     effect.style.pointerEvents = 'none';
+    effect.style.width = '100px'; // Plus grand pour la balle principale
+    effect.style.height = '100px';
     
     // Ajouter l'effet au document
     document.body.appendChild(effect);
@@ -348,8 +361,9 @@ balleDeGolf.addEventListener('click', function(event) {
     // Mettre à jour l'affichage
     updateDisplay();
     
-    // Générer une balle au curseur et afficher l'effet de clic
+    // Générer une balle au curseur avec effet de clic intégré
     genererBalleDeGolfAuCurseur(event);
+    // Effet de clic sur la balle principale
     showClickEffect(event);
     
     // Vérifier les achievements

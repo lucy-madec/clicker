@@ -34,7 +34,7 @@
     max-height: calc(100vh - 300px);
     overflow-y: auto;
     overflow-x: hidden; /* Empêcher le défilement horizontal */
-    padding-right: 0.5rem;
+    padding: 15px 0.5rem 0.5rem 0.5rem; /* Ajouter du padding en haut pour les badges */
     position: relative; /* Pour le positionnement correct des badges */
 }
 
@@ -68,8 +68,9 @@
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    width: calc(100% - 10px); /* Réduire légèrement la largeur pour éviter le dépassement */
+    width: calc(100% - 15px); /* Réduire légèrement la largeur pour éviter le dépassement */
     margin-right: 10px; /* Ajouter une marge à droite */
+    margin-top: 10px; /* Ajouter une marge en haut pour les badges */
 }
 
 .shop-item:hover {
@@ -116,8 +117,8 @@
 
 .item-count {
     position: absolute;
-    top: -8px;
-    right: 10px; /* Déplacer vers la gauche pour éviter qu'il soit coupé */
+    top: 5px; /* Déplacer vers le bas pour éviter qu'il soit coupé */
+    right: 15px; /* Déplacer vers la gauche pour éviter qu'il soit coupé */
     background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
