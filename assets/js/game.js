@@ -363,8 +363,6 @@ balleDeGolf.addEventListener('click', function(event) {
     
     // Générer une balle au curseur avec effet de clic intégré
     genererBalleDeGolfAuCurseur(event);
-    // Effet de clic sur la balle principale
-    showClickEffect(event);
     
     // Vérifier les achievements
     checkAchievements();
